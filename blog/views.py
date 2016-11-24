@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404 
+from django.shortcuts import render, get_object_or_404, HttpResponse
 from .models import Post
 
 def post_list(request):
@@ -34,8 +34,17 @@ def post_home(request):
 	}
 	return render(request, "post_home.html", context)
 
-def post_detail(request):
+def post_detail(request, id=None):
+	
 	context = {
-		'title': 'Detalles'
+		'title': 'Detalles',
 	}
+
+	if id:
+		post = get_object_or_404(Post, id=id)
+		context['post'] = post
+	else:
+		context['post'] = ""
+
+	
 	return render(request, "post_detail.html", context)

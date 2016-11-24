@@ -10,7 +10,7 @@ from .views import (
 	post_delete, 
 	post_update, 
 	post_home, 
-	post_detail
+	post_detail,
 	)
 
 urlpatterns = [
@@ -20,5 +20,6 @@ urlpatterns = [
 	url(r'^delete/$', post_delete),
 	url(r'^update/$', post_update),
 	url(r'^detail/$', post_detail),
+	url(r'^detail/(?P<id>\d+)/$', post_detail),
 
 ]
