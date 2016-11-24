@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{{ title }}</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+<hr>
+	{% for post in posts %}
+	<div>
+		ID: {{ post.id }}
+	<br>
+	Titulo: {{ post.title }}
+	<br>
+	{% if post.content|length < 500 %}
+	<blockquote>{{ post.content}}</blockquote>
+	<br>
+	{% else %}
+	<blockquote>{{ post.content|truncatechars:500 }} <a href="">Ver Mas</a></blockquote>
+	<br>
+	{% endif %}
+	Created: {{ post.timestamp }}
+	<br>
+	Updated: {{ post.updated }}
+	</div>
+	<hr>
+	{% endfor %}
+</body>
+</html>
