@@ -10,15 +10,13 @@
 <hr>
 	{% for post in posts %}
 	<div>
-		ID: {{ post.id }}
-	<br>
-	Titulo: {{ post.title }}
-	<br>
+	
+	<h3><a href="detail/{{ post.id }}">{{ post.title }}</a></h3>
 	{% if post.content|length < 500 %}
-	<blockquote>{{ post.content}}</blockquote>
+	<pre><blockquote>{{ post.content}}</blockquote></pre>
 	<br>
 	{% else %}
-	<blockquote>{{ post.content|truncatechars:500 }} <a href="">Ver Mas</a></blockquote>
+	<pre><blockquote>{{ post.content|truncatechars:500 }} <a href="detail/{{ post.id }}">Ver Mas</a></blockquote></pre>
 	<br>
 	{% endif %}
 	Created: {{ post.timestamp }}

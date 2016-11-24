@@ -7,8 +7,9 @@
 	<link rel="stylesheet" href="">
 </head>
 <body>
-	<h6>{{ post.title }}</h6>
-	<blockquote>{{ post.content}}</blockquote>
+	<h2>Post {{ post.id }}</h2>
+	<h3>{{ post.title }}</h3>
+	<pre><blockquote>{{ post.content}}</blockquote></pre>
 	<br>
 	Created: {{ post.timestamp }}
 	<br>

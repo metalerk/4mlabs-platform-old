@@ -4,7 +4,7 @@ from .models import Post
 def post_list(request):
 	posts = Post.objects.all()
 	context = {
-		'title': 'Landing Page',
+		'title': 'Blog',
 		'message': "Hola a todos!!",
 		'posts': posts
 	}
