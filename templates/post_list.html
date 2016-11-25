@@ -12,12 +12,12 @@
 	{% for post in posts %}
 	<div>
 	
-	<h3><a href="{{ post.id }}">{{ post.title }}</a></h3>
+	<h3><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></h3>
 	{% if post.content|length < 500 %}
 	<pre><blockquote>{{ post.content}}</blockquote></pre>
 	<br>
 	{% else %}
-	<pre><blockquote>{{ post.content|truncatechars:500 }} <a href="{{ post.id }}">Ver Mas</a></blockquote></pre>
+	<pre><blockquote>{{ post.content|truncatechars:500 }} <a href='{{ post.get_absolute_url }}'>Ver Mas</a></blockquote></pre>
 	<br>
 	{% endif %}
 	Created: {{ post.timestamp }}
