@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, HttpResponse
 from .models import Post
+from .forms import PostForm
 
 def post_list(request):
 	posts = Post.objects.all()
@@ -11,8 +12,21 @@ def post_list(request):
 	return render(request, "post_list.html", context)
 
 def post_create(request):
+
+	form = PostForm(request.POST or None)
+
+	if form.is_valid():
+		instance = form.save(commit=False)
+		print(form.cleaned_data.get("title"))
+		instance.save()
+
+	# if request.method == "POST":
+	# 	title = request.POST.get("title").capitalize()
+	# 	content = request.POST.get("content")
+	# 	Post.objects.create(title=title, content=content)
+
 	context = {
-		'title': 'Crear Post'
+		"form": form,
 	}
 	return render(request, "post_create.html", context)
 

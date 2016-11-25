@@ -7,6 +7,11 @@
 	<link rel="stylesheet" href="">
 </head>
 <body>
-	Create
+	<form method="POST" action="">
+		{% csrf_token %}
+		{{ form.as_p }}
+		
+	<input type="submit" value="Crear Post">
+	</form>
 </body>
 </html>
