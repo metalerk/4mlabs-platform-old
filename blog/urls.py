@@ -15,11 +15,12 @@ from .views import (
 
 urlpatterns = [
 
-	url(r'^$', post_list),
+	url(r'^$', post_list, name="list"),
 	url(r'^create/$', post_create),
-	url(r'^delete/$', post_delete),
-	url(r'^update/$', post_update),
+	url(r'^(?P<id>\d+)/delete/$', post_delete, name="delete"),
+	url(r'^(?P<id>\d+)/edit/$', post_update, name="update"),
 	url(r'^$', post_detail, name="detail"),
 	url(r'^(?P<id>\d+)/$', post_detail, name="detail"),
+	url(r'^a/', post_create)
 
 ]
