@@ -15,7 +15,7 @@
     	body, .blacked {
     		background-color: #fafafa !important;
     	}
-    
+
     </style>
 
 </head>
@@ -23,6 +23,9 @@
 
 <body>
 		<div class="ui inverted menu">
+		<a class="item" href="javascript:side_bar()">
+   <i class="content icon"></i>
+  </a>
   <div class="header item">
     <a href="/">BRAND</a>
   </div>
@@ -42,7 +45,7 @@
 
 <div class="ui grid">
 	<div class="row">
-		<div class="three wide column">
+		<!-- <div class="three wide column">
 			<div class="three wide column">
 				<div class="ui vertical menu">
 					  <div class="item">
@@ -75,7 +78,23 @@
 					  </div>
 					</div>
 			</div>
-		</div>
+		</div> -->
+
+		<div class="ui left demo vertical inverted sidebar labeled icon menu">
+  <a class="item">
+    <i class="home icon"></i>
+    Home
+  </a>
+  <a class="item">
+    <i class="block layout icon"></i>
+    Topics
+  </a>
+  <a class="item">
+    <i class="smile icon"></i>
+    Friends
+  </a>
+</div>
+
 		
 		<div class="thirteen wide column">
 			<div class="ui grid">
@@ -85,6 +104,13 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	function side_bar(){
+		$('.ui.labeled.icon.sidebar')
+  .sidebar('toggle');
+	}
+</script>
 
 </body>
 </html>
