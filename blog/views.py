@@ -27,7 +27,7 @@ def post_create(request):
 		if form.is_valid():
 			instance = form.save(commit=False)
 			instance.save()
-			messages.success(request, "Post creado exitosamente !")
+			messages.success(request, "Creación Exitosa !!")
 			return HttpResponseRedirect(instance.get_absolute_url())
 
 		else:

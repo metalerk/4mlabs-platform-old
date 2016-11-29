@@ -6,15 +6,24 @@
 {% block content %}
 
 
-	{% if messages %}
-	<ul class="messages">
-	    {% for message in messages %}
-	    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-	    {% endfor %}
-	</ul>
-	{% endif %}
-
 	<div class="fourteen wide column">
+
+	{% if messages %}
+	
+		{% for message in messages %}
+
+		<div class="ui message">
+		  <i class="close icon"></i>
+		  <div class="header">
+		 	{{ message }}
+		  </div>
+		  <p>La entrada se ha creado correctamente</p>
+		</div>
+
+		{% endfor %}
+
+		{% endif %}
+
 
 		<div class="ui raised very padded text fluid container segment">
 
@@ -25,13 +34,18 @@
 		<br>
 		<br>
 
-		Created: {{ post.timestamp }}
+		<a class="ui blue image label">
+  			Created 
+  		<div class="detail">{{ post.timestamp }}</div>
+		</a>
+		<br>
+		<a class="ui blue image label">
+  			Updated 
+  		<div class="detail">{{ post.updated }}</div>
+		</a>
 		
 		<br>
 		
-		Updated: {{ post.updated }}
-		<br>
-		<br>
 		<a href='{{ post.get_absolute_url|add:"edit" }}'><button class="ui inverted blue button">Editar</button></a>
 
 		<br>
@@ -42,5 +56,15 @@
 	  	</div>
 	</div>
 
+<script>
+	$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
+</script>
 
 {% endblock %}
