@@ -22,14 +22,20 @@ def post_create(request):
 		"form": form,
 	}
 
-	if form.is_valid():
-		instance = form.save(commit=False)
-		instance.save()
-		messages.success(request, "Saved")
-		return HttpResponseRedirect(instance.get_absolute_url())
+	if request.method == "POST":
+
+		if form.is_valid():
+			instance = form.save(commit=False)
+			instance.save()
+			messages.success(request, "Post creado exitosamente !")
+			return HttpResponseRedirect(instance.get_absolute_url())
+
+		else:
+			messages.error(request, "Error al crear el post")
 
 	else:
-		print(form.is_valid())
+
+		pass
 
 	# if request.method == "POST":
 	# 	title = request.POST.get("title").capitalize()
@@ -42,7 +48,6 @@ def post_delete(request, id=None):
 	
 	instance = get_object_or_404(Post, id=id)
 	instance.delete()
-	messages.success(request, "Item Deleted")
 
 	return redirect("posts:list")
 
@@ -57,14 +62,23 @@ def post_update(request, id=None):
 
 	form = PostForm(request.POST or None, instance=instance)
 
-	if form.is_valid():
-		
-		instance = form.save(commit=False)
-		instance.save()
+	if request.method == "POST":
 
-		messages.success(request, "Item Saved", extra_tags="some-else")
+		if form.is_valid():
+			
+			instance = form.save(commit=False)
+			instance.save()
 
-		return HttpResponseRedirect(instance.get_absolute_url())
+			messages.success(request, "Post actualizado", extra_tags="some-else")
+
+			return HttpResponseRedirect(instance.get_absolute_url())
+
+		else:
+			messages.error(request, "Error al actualizar")
+
+	else:
+
+		pass
 
 
 	context = {
@@ -82,9 +96,7 @@ def post_home(request):
 
 def post_detail(request, id=None):
 	
-	context = {
-		'title': 'Detalles'
-	}
+	context = {}
 
 	if id:
 		post = get_object_or_404(Post, id=id)
@@ -92,5 +104,6 @@ def post_detail(request, id=None):
 	else:
 		context['post'] = ""
 
-	
+	context['title'] = post.title[:50]
+
 	return render(request, "post_detail.html", context)

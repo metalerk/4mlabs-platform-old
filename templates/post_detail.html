@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>{{ title }}</title>
-	<link rel="stylesheet" href="">
-</head>
-<body>
-	
+{% extends "base.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+
+{% block content %}
+
+
 	{% if messages %}
 	<ul class="messages">
 	    {% for message in messages %}
@@ -22,7 +20,13 @@
 	Created: {{ post.timestamp }}
 	<br>
 	Updated: {{ post.updated }}
+	<br>
+	<br>
+	<a href='{{ post.get_absolute_url|add:"edit" }}'>Edit</a>
+	<br>
+	<a href="{{ post.get_absolute_url|add:'delete' }}">Delete</a>
 	</div>
 	
-</body>
-</html>
+
+
+{% endblock %}

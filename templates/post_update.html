@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>{{ title }}</title>
-	<link rel="stylesheet" href="">
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+ 
+ {% block content %}
 	<form method="POST" action="">
+		
 		{% csrf_token %}
 		{{ form.as_p }}
 		
 	<input type="submit" value="update">
 	</form>
-</body>
-</html>
+
+{% endblock %}
