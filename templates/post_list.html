@@ -3,24 +3,25 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block content %}
-<h1>Blog</h1>
-<hr>
+
 	{% for post in posts %}
-	<div>
-	
-	<h3><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></h3>
-	{% if post.content|length < 500 %}
-	<pre><blockquote>{{ post.content}}</blockquote></pre>
-	<br>
-	{% else %}
-	<pre><blockquote>{{ post.content|truncatechars:500 }} <a href='{{ post.get_absolute_url }}'>Ver Mas</a></blockquote></pre>
-	<br>
-	{% endif %}
-	Created: {{ post.timestamp }}
-	<br>
-	Updated: {{ post.updated }}
-	</div>
-	<hr>
+		<div class="five wide column">
+		
+			<div class="ui segment">
+			  		<h2 class="ui right floated header"><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></h2>
+			  		<br>
+			  		<br>
+					{% if post.content|length < 500 %}
+					<pre><blockquote>{{ post.content}}</blockquote></pre>
+					<br>
+					{% else %}
+					<blockquote>{{ post.content|truncatechars:200 }} </blockquote>
+					<br>
+					{% endif %}
+					<a href='{{ post.get_absolute_url }}'>Ver Mas</a>
+			</div>	
+		
+		</div>
 	{% endfor %}
 
 {% endblock %}
