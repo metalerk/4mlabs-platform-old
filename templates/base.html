@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,99 +12,14 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
 
-    <style>
-    	body, .blacked {
-    		background-color: #fafafa !important;
-    	}
-
-    </style>
+	<link rel="stylesheet" href='{% static "css/app.css" %}' />
 
 </head>
 
 
 <body>
-		<div class="ui inverted menu">
-		<a class="item" href="javascript:side_bar()">
-   <i class="content icon"></i>
-  </a>
-  <div class="header item">
-    <a href="/">BRAND</a>
-  </div>
-  <a class="item">
-    Acerca De
-  </a>
-  <a class="item" href="/posts">
-    Blog
-  </a>
-  <a class="item" href="https://github.com/metalerk" target="_blank">
-    GitHub	
-  </a>
-  <a class="item">
-    CV	
-  </a>
-</div>
 
-<div class="ui grid">
-	<div class="row">
-		<!-- <div class="three wide column">
-			<div class="three wide column">
-				<div class="ui vertical menu">
-					  <div class="item">
-					    <div class="header">Proyectos</div>
-					    <div class="menu">
-					      <a class="item">VKT</a>
-					      <a class="item">Veronica Framework</a>
-					    </div>
-					  </div>
-					  <div class="item">
-					    <div class="header">Lenguajes</div>
-					    <div class="menu">
-					      <a class="item">Python</a>
-					      <a class="item">Django</a>
-					    </div>
-					  </div>
-					  <div class="item">
-					    <div class="header">Vídeos</div>
-					    <div class="menu">
-					      <a class="item">Shared</a>
-					      <a class="item">Dedicated</a>
-					    </div>
-					  </div>
-					  <div class="item">
-					    <div class="header">Contacto</div>
-					    <div class="menu">
-					      <a class="item">E-mail Support</a>
-					      <a class="item">FAQs</a>
-					    </div>
-					  </div>
-					</div>
-			</div>
-		</div> -->
 
-		<div class="ui left demo vertical inverted sidebar labeled icon menu">
-  <a class="item">
-    <i class="home icon"></i>
-    Home
-  </a>
-  <a class="item">
-    <i class="block layout icon"></i>
-    Topics
-  </a>
-  <a class="item">
-    <i class="smile icon"></i>
-    Friends
-  </a>
-</div>
-
-		
-		<div class="thirteen wide column">
-			<div class="ui grid">
-				{% block content %}
-				{% endblock %}
-			</div>
-		</div>
-	</div>
-</div>
 
 <script>
 	function side_bar(){
