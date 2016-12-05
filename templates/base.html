@@ -1,4 +1,3 @@
-{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,20 +11,84 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
 
-	<link rel="stylesheet" href='{% static "css/app.css" %}' />
-
 </head>
 
 
 <body>
 
+	<div class="row">
+		<div class="ui inverted stackable menu">
+		<div class="header item">
+			<img src="http://www.metalerk.com/static/img/nappa.jpg" alt="" style="height: 50px; width: 70px;">
 
+		</div>
+		<a class="blue item">Inicio</a>
+		<a href="" class="blue item">Blog</a>
+		<a href="" class="item">
+			<i class="video play icon"></i>
+			Videos
+		</a>
+		<a href="" class="blue item">CV</a>
+		<a href="" class="blue item">Contacto</a>
+		<div class="right menu">
+			<a href="" class="ui item"><i class="add user icon"></i>Registro</a>
+			<a href="" class="ui item">
+			<i class="sign in icon"></i>Entrar</a>
+			<a href="" class="ui item"></a>
+		</div>
+	</div>
+	</div>
+
+
+	<div class="row">
+		<div class="ui stackable grid">
+			<div class="three wide column">
+				<div class="ui vertical menu">
+					  <div class="item">
+					    <div class="header">Products</div>
+					    <div class="menu">
+					      <a class="item">Enterprise</a>
+					      <a class="item">Consumer</a>
+					    </div>
+					  </div>
+					  <div class="item">
+					    <div class="header">CMS Solutions</div>
+					    <div class="menu">
+					      <a class="item">Rails</a>
+					      <a class="item">Python</a>
+					      <a class="item">PHP</a>
+					    </div>
+					  </div>
+					  <div class="item">
+					    <div class="header">Hosting</div>
+					    <div class="menu">
+					      <a class="item">Shared</a>
+					      <a class="item">Dedicated</a>
+					    </div>
+					  </div>
+					  <div class="item">
+					    <div class="header">Support</div>
+					    <div class="menu">
+					      <a class="item">E-mail Support</a>
+					      <a class="item">FAQs</a>
+					    </div>
+					  </div>
+					</div>
+			</div>
+			<div class="twelve wide column">
+				
+					<div class="ui piled segment">
+					  <h1 class="ui header">Title</h1>
+					  <br>
+					  <p>paragraph</p>
+					</div>
+			</div>
+
+		</div>
+	</div>
 
 <script>
-	function side_bar(){
-		$('.ui.labeled.icon.sidebar')
-  .sidebar('toggle');
-	}
+	
 </script>
 
 </body>
