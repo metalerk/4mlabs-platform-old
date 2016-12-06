@@ -15,7 +15,7 @@
 					<pre><blockquote>{{ post.content}}</blockquote></pre>
 					<br>
 					{% else %}
-					<blockquote>{{ post.content|truncatechars:200 }} </blockquote>
+					<blockquote>{{ post.content|linebreaks|truncatechars:200 }} </blockquote>
 					<br>
 					{% endif %}
 					<a href='{{ post.get_absolute_url }}'>Ver Mas</a>

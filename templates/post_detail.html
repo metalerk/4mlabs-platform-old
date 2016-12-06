@@ -27,7 +27,7 @@
 
 	  	<h1 class="ui header centered">{{ post.title }}</h1>
 	  	<br>
-	  	<p>{{ post.content}}</p>
+	  	<p>{{ post.content|linebreaks }}</p>
 		
 		<br>
 		<br>
@@ -48,7 +48,7 @@
 
 		<br>
 		<br>
-		<a href="{{ post.get_absolute_url|add:'delete' }}"><a href='{{ post.get_absolute_url|add:"delete" }}'><button class="ui inverted red button">Borrar</button></a></a>
+		<a href='{{ post.get_absolute_url|add:"delete" }}'><button id="delete" class="ui inverted red button">Borrar</button></a>
 
 
 	  	</div>
@@ -57,12 +57,13 @@
 <script>
 	$('.message .close')
   .on('click', function() {
-    $(this)
-      .closest('.message')
-      .transition('fade')
-    ;
-  })
-;
+    	$(this).closest('.message').transition('fade');
+  	});
+
+  	$('.delete').click(function(){
+
+  	});
+
 </script>
 
 {% endblock %}
