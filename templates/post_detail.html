@@ -6,7 +6,7 @@
 {% block content %}
 
 
-	<div class="fourteen wide column">
+	<div class="ui piled segment">
 
 	{% if messages %}
 	
@@ -25,10 +25,8 @@
 		{% endif %}
 
 
-		<div class="ui raised very padded text fluid container segment">
-
-	  	<h2 class="ui header">{{ post.title }}</h2>
-	  	
+	  	<h1 class="ui header centered">{{ post.title }}</h1>
+	  	<br>
 	  	<p>{{ post.content}}</p>
 		
 		<br>
@@ -51,7 +49,7 @@
 		<br>
 		<br>
 		<a href="{{ post.get_absolute_url|add:'delete' }}"><a href='{{ post.get_absolute_url|add:"delete" }}'><button class="ui inverted red button">Borrar</button></a></a>
-		</div>
+
 
 	  	</div>
 	</div>
