@@ -5,10 +5,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post
 from .forms import PostForm
 
+prompt = "luis:~$ "
+
 def post_list(request):
 	posts = Post.objects.all()
 	context = {
-		'title': 'Blog',
+		'title': prompt + 'blog',
 		'message': "Hola a todos!!",
 		'posts': posts
 	}
@@ -19,6 +21,7 @@ def post_create(request):
 	form = PostForm(request.POST or None)
 
 	context = {
+		"title": prompt + "create",
 		"form": form,
 	}
 
@@ -52,7 +55,7 @@ def post_delete(request, id=None):
 	return redirect("posts:list")
 
 	context = {
-		'title': 'Borrar Post'
+		'title': prompt + 'delete'
 	}
 	return render(request, "post_delete.html", context)
 
@@ -82,7 +85,7 @@ def post_update(request, id=None):
 
 
 	context = {
-		'title': 'Actualizar Post',
+		'title': prompt + "update",
 		'post': instance,
 		'form': form
 	}
@@ -96,6 +99,8 @@ def post_home(request):
 
 def post_detail(request, id=None):
 	
+	global prompt
+
 	context = {}
 
 	if id:
@@ -104,6 +109,6 @@ def post_detail(request, id=None):
 	else:
 		context['post'] = ""
 
-	context['title'] = post.title[:50]
+	context['title'] = prompt + post.title[:50]
 
 	return render(request, "post_detail.html", context)

@@ -27,8 +27,9 @@
 
 	  	<h1 class="ui header centered">{{ post.title }}</h1>
 	  	<br>
+	  	{% autoescape on %}
 	  	<p>{{ post.content|linebreaks }}</p>
-		
+		{% endautoescape %}
 		<br>
 		<br>
 
