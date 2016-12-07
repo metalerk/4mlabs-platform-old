@@ -30,7 +30,7 @@ def post_create(request):
 		if form.is_valid():
 			instance = form.save(commit=False)
 			instance.save()
-			messages.success(request, "Creación Exitosa !!")
+			messages.success(request, "La entrada se ha creado correctamente.")
 			return HttpResponseRedirect(instance.get_absolute_url())
 
 		else:
@@ -72,12 +72,12 @@ def post_update(request, id=None):
 			instance = form.save(commit=False)
 			instance.save()
 
-			messages.success(request, "Post actualizado", extra_tags="some-else")
+			messages.success(request, "La entrada se ha actualizado correctamente.", extra_tags="success")
 
 			return HttpResponseRedirect(instance.get_absolute_url())
 
 		else:
-			messages.error(request, "Error al actualizar")
+			messages.error(request, "Error al actualizar", extra_tags="warning")
 
 	else:
 

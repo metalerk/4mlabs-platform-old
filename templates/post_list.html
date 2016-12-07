@@ -4,15 +4,21 @@
 
 {% block content %}
 
+		<br>
+		<h1 class="ui center aligned header">Entradas</h1>
+		<br>
+
 	{% for post in posts %}
 		<div class="five wide column">
 		
 			<div class="ui segment">
+					
+
 			  		<h2 class="ui right floated header"><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></h2>
 			  		<br>
 			  		<br>
 					{% if post.content|length < 500 %}
-					<pre><blockquote>{{ post.content}}</blockquote></pre>
+					<blockquote>{{ post.content|linebreaks}}</blockquote>
 					<br>
 					{% else %}
 					<blockquote>{{ post.content|linebreaks|truncatechars:200 }} </blockquote>
@@ -22,6 +28,8 @@
 			</div>	
 		
 		</div>
+		<br>
+		  <div class="ui divider"></div>
 		<br>
 	{% endfor %}
 

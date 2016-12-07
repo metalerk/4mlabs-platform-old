@@ -16,13 +16,16 @@
 
 <body>
 
-	<div class="row">
-		<div class="ui inverted stackable menu">
+		<div class="row">
+			
+			<div class="ui top attached">
+		
+		<div class="ui inverted sticky stackable menu mainMenu" style="padding-left: 180px !important;">
 		<div class="header item">
-			<img src="http://www.metalerk.com/static/img/nappa.jpg" alt="" style="height: 50px; width: 70px;">
+			
 
 		</div>
-		<a href="/" class="blue item">Inicio</a>
+		<a href="/" class="blue item">4M Labs</a>
 		<a href="/posts" class="blue item"><i class="book icon"></i>  Blog</a>
 		<a href="" class="item">
 			<i class="video play icon"></i>
@@ -37,13 +40,26 @@
 			<a href="" class="ui item"></a>
 		</div>
 	</div>
+
 	</div>
 
+		</div>
 
-	<div class="row">
+
+		<div class="row">
+
+
+		
 		<div class="ui stackable grid">
+			
 			<div class="three wide column">
-				<div class="ui vertical menu">
+			
+				<div class="ui fixed sticky vertical inverted segment menu" style="padding-top: 1%; padding-bottom: 2.5%;">
+			
+					  <div class="item">
+					  	<img src="http://www.metalerk.com/static/img/nappa.jpg" alt="">
+					  </div>
+
 					  <div class="item">
 					    <div class="header">Conversión de Divisas</div>
 					    <div class="menu">
@@ -74,27 +90,37 @@
 					      <a class="item">E-mail Support</a>
 					      <a class="item">FAQs</a>
 					    </div>
+					  
 					  </div>
+					
 					</div>
+
 			</div>
 
 			<div class="twelve wide column">
-				
-					<!-- <div class="ui piled segment">
-					  <h1 class="ui header">Title</h1>
-					  <br>
-					  <p>paragraph</p>
-					</div> -->
+
+
+				<div class="segment" id="content">
+
+					
 
 					{% block content %}
 					{% endblock %}
+
+					<div class="ui large centered inline text loader">
+    					Cargando...
+  					</div>
+
+				</div>	
 
 			</div>
 
 		</div>
 	</div>
 
-	<div class="row">
+
+
+	<!-- <div class="row">
 		<div class="ui grid">
 			<div class="ui stackable grid">
 				<div class="ten wide column">
@@ -102,10 +128,36 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+
+</div>
+
+<div class="ui inverted vertical footer segment form-page" style="position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1em;
+  text-align: center; !important;">
+  <div class="ui container">
+    4M Labs 2016. All Rights Reserved
+  </div>
 
 <script>
-	
+	$('.mainMenu')
+  .sticky({
+    context: '#content',
+    pushing: true,
+  })
+;
+
+$('.LeftMenu')
+  .sticky({
+    context: '#content',
+    type: "fixed",
+    pushing: true,
+    zIndex: 1,
+  })
+;
 </script>
 
 </body>
