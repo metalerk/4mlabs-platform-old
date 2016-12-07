@@ -7,13 +7,13 @@ from .forms import PostForm
 
 prompt = "luis:~$ "
 
-def post_list(request):
-	posts = Post.objects.all()
+def post_list(request, deleted=False):
+	posts = Post.objects.all().order_by("-timestamp")
 	context = {
 		'title': prompt + 'blog',
-		'message': "Hola a todos!!",
 		'posts': posts
 	}
+
 	return render(request, "post_list.html", context)
 
 def post_create(request):
@@ -52,7 +52,7 @@ def post_delete(request, id=None):
 	instance = get_object_or_404(Post, id=id)
 	instance.delete()
 
-	return redirect("posts:list")
+	return redirect("posts:list"	)
 
 	context = {
 		'title': prompt + 'delete'

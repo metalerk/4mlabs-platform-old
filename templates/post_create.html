@@ -3,12 +3,30 @@
 {% block title %} {{ title }} {% endblock %}
  
  {% block content %}
-	<form method="POST" action="">
+
+ 	<br>
+
+	<h1 class="ui center aligned header">Crear Entrada</h1>
+
+	<form method="POST" action="" class="ui form">
 		
 		{% csrf_token %}
 		{{ form.as_p }}
+
+	<div class="ui buttons">
+	    
+	    <button type="submit" class="ui inverted blue button">Crear</button>
+	    <div class="or"></div>
+	    <button class="ui inverted red button cancel">Cancel</button>
+	    
+  	</div>
 		
-	<input type="submit" value="Crear Post">
 	</form>
+
+	<script>
+		$(".cancel").click(function(){
+			$(location).attr('href', '/posts');
+		});
+	</script>
 
 {% endblock %}

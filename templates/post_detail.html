@@ -47,10 +47,60 @@
 		
 		<a href='{{ post.get_absolute_url|add:"edit" }}'><button class="ui inverted blue button">Editar</button></a>
 
-		<a href='{{ post.get_absolute_url|add:"delete" }}'><button id="delete" class="ui inverted red button">Borrar</button></a>
+		<a id="erase"><button id="delete" class="ui inverted red button">Borrar</button></a>
 
 
 	  	</div>
+
+		<!-- MODALS -->
+
+	  	<div class="ui basic modal delete">
+			  <div class="center header">
+			    Borrar Entrada
+			  </div>
+			  <div class="image content">
+			    
+			    <div class="description">
+			      <p>Segur@ que quieres borrar esta entrada ?</p>
+			    </div>
+			  </div>
+			  <div class="actions">
+			    <div class="two ui inverted buttons">
+			    <div class="ui ok blue basic inverted button">
+			        <i class="checkmark icon"></i>
+			        Si
+			      </div>
+			      <div class="ui cancel red basic inverted button">
+			        <i class="remove icon"></i>
+			        No
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+			<!-- OTRO MODAL -->
+
+			<div class="ui basic modal deletedOK">
+			  <div class="center header">
+			    Entrada Borrada
+			  </div>
+			  <div class="image content">
+			    
+			    <div class="description">
+			      <p>La entrada se borrará en breve.</p>
+			    </div>
+			  </div>
+			  <div class="actions">
+			    <div class="two ui inverted buttons">
+			    <div class="ui ok blue basic inverted button">
+			        <i class="checkmark icon"></i>
+			        OK
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+			<!--   -->
 
 <script>
 	$('.message .close')
@@ -58,8 +108,23 @@
     	$(this).closest('.message').transition('fade');
   	});
 
-  	$('.delete').click(function(){
-
+  	$('#delete').click(function(){
+  		$('.ui.basic.modal.delete').modal({
+    closable  : true,
+    onApprove : function() {
+      $(".ui.basic.modal.deletedOK").modal({
+      	closable: false,
+      	onApprove: function(){
+      		$(location).attr('href', '{{ post.get_absolute_url|add:"delete" }}');
+      	},
+      	onDeny: function(){
+      		$(location).attr('href', '{{ post.get_absolute_url|add:"delete" }}');
+      	}
+      }).modal("show");
+    }
+  })
+  .modal('show')
+;
   	});
 
 </script>
