@@ -4,6 +4,24 @@
  
  {% block content %}
 
+ {% if messages %}
+	
+		{% for message in messages %}
+
+		<br>
+
+		<div class="ui negative message">
+		  <i class="close icon"></i>
+		  <div class="header">
+		 	{{ message }}
+		  </div>
+		  <!-- <p>La entrada se ha creado correctamente</p> -->
+		</div>
+
+		{% endfor %}
+
+		{% endif %}
+
  	<br>
 
 	<h1 class="ui center aligned header">Crear Entrada</h1>
@@ -17,15 +35,23 @@
 	    
 	    <button type="submit" class="ui inverted blue button">Crear</button>
 	    <div class="or"></div>
-	    <button class="ui inverted red button cancel">Cancel</button>
+	    <button type="reset" class="ui inverted red button cancel">Cancel</button>
 	    
   	</div>
 		
 	</form>
 
 	<script>
+		$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
 		$(".cancel").click(function(){
-			$(location).attr('href', '/posts');
+			$(location).attr('href', '/posts	');
 		});
 	</script>
 

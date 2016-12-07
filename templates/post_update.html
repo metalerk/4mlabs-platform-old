@@ -3,12 +3,56 @@
 {% block title %} {{ title }} {% endblock %}
  
  {% block content %}
-	<form method="POST" action="">
+
+ {% if messages %}
+	
+		{% for message in messages %}
+
+		<br>
+
+		<div class="ui negative message">
+		  <i class="close icon"></i>
+		  <div class="header">
+		 	{{ message }}
+		  </div>
+		  <!-- <p>La entrada se ha creado correctamente</p> -->
+		</div>
+
+		{% endfor %}
+
+		{% endif %}
+
+ 	<br>
+
+	<h1 class="ui center aligned header">Actualizar Entrada</h1>
+
+	<form method="POST" action="" class="ui form">
 		
 		{% csrf_token %}
 		{{ form.as_p }}
 		
-	<input type="submit" value="update">
+	<div class="ui buttons">
+	    
+	    <button type="submit" class="ui inverted blue button">Actualizar</button>
+	    <div class="or"></div>
+	    <button type="reset" class="ui inverted red button" id="cancelSubmit">Cancel</button>
+	    
+  	</div>
+
 	</form>
+
+	<script>
+		$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
+		$("#cancelSubmit").click(function(){
+			$(location).attr('href', '{{ post.get_absolute_url }}')
+		});
+	</script>
 
 {% endblock %}
