@@ -35,4 +35,40 @@
 		<br>
 	{% endfor %}
 
+	<div class="ui pagination menu">
+	  <a class="active item">
+	    1
+	  </a>
+	  <div class="disabled item">
+	    ...
+	  </div>
+	  <a class="item">
+	    10
+	  </a>
+	  <a class="item">
+	    11
+	  </a>
+	  <a class="item">
+	    {{ pages }}
+	  </a>
+</div>
+
+	<div class="ui pagination menu">
+
+
+    	<span class="step-links">
+	        {% if posts.has_previous %}
+	            <a href="?page={{ posts.previous_page_number }}">previous</a>
+	        {% endif %}
+
+	        <span class="current">
+	            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+	        </span>
+
+	        {% if posts.has_next %}
+	            <a href="?page={{ posts.next_page_number }}">next</a>
+	        {% endif %}
+	   	</span>
+	</div>
+
 {% endblock %}

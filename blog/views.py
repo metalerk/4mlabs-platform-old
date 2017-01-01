@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Post
 from .forms import PostForm
@@ -8,10 +9,28 @@ from .forms import PostForm
 prompt = "luis:~$ "
 
 def post_list(request, deleted=False):
-	posts = Post.objects.all().order_by("-timestamp")
+	
+	posts_list = Post.objects.all().order_by("-timestamp")
+	paginator = Paginator(posts_list, 2)
+
+	page = request.GET.get('page')
+
+	try:
+	    posts = paginator.page(posts_list)
+	except PageNotAnInteger:
+
+	    posts = paginator.page(1)
+
+	except EmptyPage:
+
+	    posts = paginator.page(paginator.num_pages)
+
+	pages = paginator.num_pages
+
 	context = {
 		'title': prompt + 'blog',
-		'posts': posts
+		'posts': posts,
+		'pages' : pages
 	}
 
 	return render(request, "post_list.html", context)
@@ -106,7 +125,7 @@ def post_update(request, id=None):
 
 def post_home(request):
 	context = {
-		'title': 'Home'
+		'title' : 'Home',
 	}
 	return render(request, "post_home.html", context)
 

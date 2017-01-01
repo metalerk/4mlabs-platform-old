@@ -4,5 +4,7 @@
 {% block content %}
 	<h1>Home</h1>
 	<a href='{{ create_post }}'>Crear Post</a>
+	<h3>IP: {{ remote_ip }}</h3>
+	<h3>User Agent: {{ user_agent }}</h3>
 
 {% endblock %}
