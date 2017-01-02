@@ -9,9 +9,9 @@ from .forms import PostForm
 prompt = "luis:~$ "
 
 def post_list(request, deleted=False):
-	
+
 	posts_list = Post.objects.all().order_by("-timestamp")
-	paginator = Paginator(posts_list, 2)
+	paginator = Paginator(posts_list, 5)
 
 	page = request.GET.get('page')
 
@@ -73,7 +73,7 @@ def post_create(request):
 	return render(request, "post_create.html", context)
 
 def post_delete(request, id=None):
-	
+
 	instance = get_object_or_404(Post, id=id)
 	instance.delete()
 
@@ -85,7 +85,7 @@ def post_delete(request, id=None):
 	return render(request, "post_delete.html", context)
 
 def post_update(request, id=None):
-	
+
 	instance = get_object_or_404(Post, id=id)
 
 	form = PostForm(request.POST or None, instance=instance)
@@ -101,7 +101,7 @@ def post_update(request, id=None):
 		if form.is_valid():
 
 			if not ((Post.objects.filter(title=form.cleaned_data['title']) == 'title') and (Post.objects.filter(content=form.cleaned_data['content']) == 'content')):
-			
+
 				instance = form.save(commit=False)
 				instance.save()
 
@@ -120,7 +120,7 @@ def post_update(request, id=None):
 		pass
 
 
-	
+
 	return render(request, "post_update.html", context)
 
 def post_home(request):
@@ -130,7 +130,7 @@ def post_home(request):
 	return render(request, "post_home.html", context)
 
 def post_detail(request, id=None):
-	
+
 	global prompt
 
 	context = {}

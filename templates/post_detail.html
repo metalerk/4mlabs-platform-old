@@ -9,7 +9,7 @@
 	<div class="ui piled segment">
 
 	{% if messages %}
-	
+
 		{% for message in messages %}
 
 		<div class="ui success message">
@@ -26,25 +26,24 @@
 
 		<br>
 	  	<h1 class="ui header centered">{{ post.title }}</h1>
-	  	<br>
 	  	{% autoescape on %}
-	  	<p>{{ post.content|linebreaks }}</p>
+	  	<p class="flow-text">{{ post.content|safe }}</p>
 		{% endautoescape %}
 		<br>
 		<br>
 
 		<a class="ui blue image label">
-  			Created 
+  			Created
   		<div class="detail">{{ post.timestamp }}</div>
 		</a>
 		<a class="ui blue image label">
-  			Updated 
+  			Updated
   		<div class="detail">{{ post.updated }}</div>
 		</a>
-		
+
 		<br>
 		<br>
-		
+
 		<a href='{{ post.get_absolute_url|add:"edit" }}'><button class="ui inverted blue button">Editar</button></a>
 
 		<a id="erase"><button id="delete" class="ui inverted red button">Borrar</button></a>
@@ -59,7 +58,7 @@
 			    Borrar Entrada
 			  </div>
 			  <div class="image content">
-			    
+
 			    <div class="description">
 			      <p>Segur@ que quieres borrar esta entrada ?</p>
 			    </div>

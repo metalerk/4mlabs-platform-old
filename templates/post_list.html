@@ -5,16 +5,41 @@
 {% block content %}
 
 		<br>
-		<h1 class="ui center aligned header">Entradas Recientes</h1>
+		<h1 class="center-align">Entradas Recientes</h1>
 		<br>
-		<div class="ui divider"></div>	
+		<div class="divider"></div>
 		<br>
 
 	{% for post in posts %}
-		<div class="five wide column">
-		
+
+		<div class="center-align">
+			<div class="row">
+				<div class="col s12 m12">
+					<div class="card hoverable large">
+						<div class="card-image">
+							<img src="http://www.metalerk.com/static/img/nappa.jpg" class="responsive-img">
+							<span class="card-title"><h4><a href='{{ post.get_absolute_url }}' style="color: white;">{{ post.title }}</a></h4></span>
+						</div>
+						<div class="card-content">
+							<p>{% if post.preview|length < 200 %}
+							{{ post.preview|linebreaks}}
+							{% else %}
+							{{ post.preview|linebreaks|truncatechars:100 }}
+							{% endif %}</p>
+						</div>
+						<div class="card-action">
+							<a href='{{ post.get_absolute_url }}' class="blue-text">Ver Mas</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- <div class="five wide column">
+
 			<div class="ui segment">
-					
+
 
 			  		<h2 class="ui floated header"><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></h2>
 			  		<br>
@@ -27,12 +52,12 @@
 					<br>
 					{% endif %}
 					<a href='{{ post.get_absolute_url }}'>Ver Mas</a>
-			</div>	
-		
+			</div>
+
 		</div>
 		<br>
 		  <div class="ui divider"></div>
-		<br>
+		<br> -->
 	{% endfor %}
 
 	<div class="ui pagination menu">
