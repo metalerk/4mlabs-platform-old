@@ -3,8 +3,20 @@
 
 {% block content %}
 	<h1>Home</h1>
-	<a href='{{ create_post }}'>Crear Post</a>
-	<h3>IP: {{ remote_ip }}</h3>
-	<h3>User Agent: {{ user_agent }}</h3>
+	{% if "Macintosh" in user_agent %}
+		<h5>SO: MacOSX</h5>
+	{% elif "iPhone" in user_agent %}
+		<h5>SO: iPhone</h5>
+	{% elif "Android" in user_agent %}
+		<h5>SO: Android</h5>
+	{% elif "Windows" in user_agent %}
+		<h5>SO: Windows</h5>
+	{% elif "Linux" in user_agent %}
+		<h5>SO: Linux</h5>
+	{% else %}
+		<h5>Otro</h5>
+	{% endif %}
+	<br>
+	<h5><a href='{{ create_post }}'>Crear Post</a></h5>
 
 {% endblock %}

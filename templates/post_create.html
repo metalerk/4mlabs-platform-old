@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block title %} {{ title }} {% endblock %}
- 
+
  {% block content %}
 
  {% if messages %}
-	
+
 		{% for message in messages %}
 
 		<br>
@@ -26,19 +26,16 @@
 
 	<h1 class="ui center aligned header">Crear Entrada</h1>
 
-	<form method="POST" action="" class="ui form">
-		
+	<form method="POST" action="" class="ui form" enctype="multipart/form-data">
+
 		{% csrf_token %}
 		{{ form.as_p }}
 
-	<div class="ui buttons">
-	    
-	    <button type="submit" class="ui inverted blue button">Crear</button>
-	    <div class="or"></div>
-	    <button type="reset" class="ui inverted red button cancel">Cancel</button>
-	    
-  	</div>
-		
+
+
+	    <button type="submit" class="btn waves-effect waves-light">Crear</button>
+	    <button type="reset" class="btn waves-effect waves-light">Cancel</button>
+
 	</form>
 
 	<script>
@@ -51,7 +48,7 @@
   })
 ;
 		$(".cancel").click(function(){
-			$(location).attr('href', '/posts	');
+			$(location).attr('href', '/posts');
 		});
 	</script>
 

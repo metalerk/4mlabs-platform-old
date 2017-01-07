@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{% block title %}{{ title }}{% endblock %}</title>
+	<script
+              src="https://code.jquery.com/jquery-3.1.1.min.js"
+              integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+              crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
+
+    <style>
+    	p {
+    		font-size: 120% !important;
+    	}
+    </style>
+
+</head>
+
+
+<body>
+
+		<div class="row">
+			
+			<div class="ui top attached">
+		
+		<div class="ui fixed inverted sticky stackable menu mainMenu" style="padding-left: 180px !important;">
+		<div class="header item">
+			
+
+		</div>
+		<a href="/" class="blue item">4M Labs</a>
+		<a href="/posts" class="blue item"><i class="book icon"></i>  Blog</a>
+		<a href="" class="item">
+			<i class="video play icon"></i>
+			Videos
+		</a>
+		<a href="https://github.com/metalerk/" target="_blank" class="blue item"><i class="github icon"></i> GitHub</a>
+		<a href="" class="blue item"><i class="mail outline icon"></i> Contacto</a>
+		<div class="right menu">
+			<a href="" class="ui item"><i class="add user icon"></i>Registro</a>
+			<a href="" class="ui item">
+			<i class="power icon"></i>Entrar</a>
+			<a  class="ui item"></a>
+		</div>
+	</div>
+
+	</div>
+
+		</div>
+
+
+		<div class="row">
+
+
+		
+		<div class="ui stackable grid">
+			
+			<div class="three wide column">
+			
+				<div class="ui fixed sticky vertical inverted segment menu" style="padding-top: 1%; padding-bottom: 2.5%;">
+			
+					  <div class="item">
+					  	<img src="http://www.metalerk.com/static/img/nappa.jpg" alt="">
+					  </div>
+
+					  <div class="item">
+					    <div class="header">Conversión de Divisas</div>
+					    <div class="menu">
+					      <a class="item">Dólar a Peso</a>
+					      <a class="item">Peso a Dólar</a>
+					      <a class="item">Euro a Peso</a>
+					      <a class="item">Peso a Euro</a>
+					    </div>
+					  </div>
+					  <div class="item">
+					    <div class="header">Categorias</div>
+					    <div class="menu">
+					      <a class="item">Ruby</a>
+					      <a class="item">Python</a>
+					      <a class="item">PHP</a>
+					    </div>
+					  </div>
+					  <div class="item">
+					    <div class="header">Hosting</div>
+					    <div class="menu">
+					      <a class="item">Shared</a>
+					      <a class="item">Dedicated</a>
+					    </div>
+					  </div>
+					  <div class="item">
+					    <div class="header">Support</div>
+					    <div class="menu">
+					      <a class="item">E-mail Support</a>
+					      <a class="item">FAQs</a>
+					    </div>
+					  
+					  </div>
+					
+					</div>
+
+			</div>
+
+			<div class="twelve wide column">
+
+
+				<div class="segment" id="content">
+
+					
+
+					{% block content %}
+					{% endblock %}
+
+					<div class="ui large centered inline text loader">
+    					Cargando...
+  					</div>
+
+				</div>	
+
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<!-- <div class="row">
+		<div class="ui grid">
+			<div class="ui stackable grid">
+				<div class="ten wide column">
+
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+</div>
+
+<!-- <div class="ui inverted vertical footer segment form-page" style="position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1em;
+  text-align: center; !important;">
+  <div class="ui container">
+    4M Labs 2016. All Rights Reserved
+  </div> -->
+
+<script>
+	$('.mainMenu')
+  .sticky({
+    context: '#content',
+    pushing: true,
+  })
+;
+</script>
+
+</body>
+</html>
