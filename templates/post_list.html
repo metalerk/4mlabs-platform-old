@@ -22,9 +22,9 @@
 						</div>
 						<div class="card-content">
 							<p>{% if post.preview|length < 200 %}
-							{{ post.preview|linebreaks}}
+							<h5>{{ post.preview|linebreaks}}</h5>
 							{% else %}
-							{{ post.preview|linebreaks|truncatechars:100 }}
+							<h5>{{ post.preview|linebreaks|truncatechars:100 }}</h5>
 							{% endif %}</p>
 						</div>
 						<div class="card-action">

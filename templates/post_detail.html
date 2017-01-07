@@ -15,7 +15,7 @@
 		<br>
 
 		<div class="chip">
-			{{ message }}
+			<strong>{{ message }}</strong>
     	<i class="close material-icons">close</i>
   		</div>
 
@@ -30,15 +30,24 @@
 		{% endautoescape %}
 		<br>
 		<br>
+		<br>
+		<br>
 
-		<a class="ui blue image label">
-  			Created
-  		<div class="detail">{{ post.timestamp }}</div>
-		</a>
-		<a class="ui blue image label">
-  			Updated
-  		<div class="detail">{{ post.updated }}</div>
-		</a>
+      <table>
+        <thead>
+          <tr>
+              <th data-field="created">Creado</th>
+              <th data-field="updated">Actualizado</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>{{ post.timestamp }}</td>
+			<td>{{ post.updated }}</td>
+          </tr>
+        </tbody>
+      </table>
 
 		<br>
 		<br>
