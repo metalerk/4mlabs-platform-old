@@ -4,12 +4,13 @@ from .models import Post
 class PostForm(forms.ModelForm):
 	class Meta:
 		model = Post
-		fields = ["title", "content", "preview"]
+		fields = ["title", "content", "preview", "image"]
 		widgets = {
 
 			"title": forms.TextInput(attrs={'class' : 'input-field'}),
 			"content": forms.Textarea(attrs={'class': 'materialize-textarea'}),
-			"preview": forms.TextInput(attrs={'class' : 'input-field'})
+			"preview": forms.TextInput(attrs={'class' : 'input-field'}),
+			"image" : forms.ClearableFileInput(attrs={'class': 'file-path validate', 'type' : 'text'})
 
 		}
 

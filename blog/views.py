@@ -37,7 +37,7 @@ def post_list(request, deleted=False):
 
 def post_create(request):
 
-	form = PostForm(request.POST or None)
+	form = PostForm(request.POST or None, request.FILES or None)
 
 	context = {
 		"title": prompt + "create",
@@ -88,7 +88,7 @@ def post_update(request, id=None):
 
 	instance = get_object_or_404(Post, id=id)
 
-	form = PostForm(request.POST or None, instance=instance)
+	form = PostForm(request.POST or None, request.FILES or None, instance=instance)
 
 	context = {
 		'title': prompt + "update",
