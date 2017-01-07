@@ -12,20 +12,19 @@
 
 		{% for message in messages %}
 
-		<div class="ui success message">
-		  <i class="close icon"></i>
-		  <div class="header">
-		 	{{ message }}
-		  </div>
-		  <!-- <p>La entrada se ha creado correctamente</p> -->
-		</div>
+		<br>
+
+		<div class="chip">
+			{{ message }}
+    	<i class="close material-icons">close</i>
+  		</div>
 
 		{% endfor %}
 
 		{% endif %}
 
+	  	<h1 class="centered	">{{ post.title }}</h1>
 		<br>
-	  	<h1 class="ui header centered">{{ post.title }}</h1>
 	  	{% autoescape on %}
 	  	<p class="flow-text">{{ post.content|safe }}</p>
 		{% endautoescape %}
@@ -44,10 +43,17 @@
 		<br>
 		<br>
 
-		<a href='{{ post.get_absolute_url|add:"edit" }}'><button class="ui inverted blue button">Editar</button></a>
 
-		<a id="erase"><button id="delete" class="ui inverted red button">Borrar</button></a>
+		<div class="fixed-action-btn horizontal">
+			<a class="btn-floating btn-large black">
+			  <i class="material-icons">menu</i>
+			</a>
+			<ul>
+				<li><a href='{{ post.get_absolute_url|add:"edit" }}' class="btn-floating teal tooltipped" data-position="top" data-delay="50" data-tooltip="Editar"><i class="material-icons">mode_edit</i></a></li>
+      			<li><a id="erase"><button id="delete" class="btn-floating red tooltipped" data-position="top" data-delay="50" data-tooltip="Borrar""><i class="material-icons">not_interested</i></a></li>
 
+			</ul>
+		  </div>
 
 	  	</div>
 
@@ -102,6 +108,14 @@
 			<!--   -->
 
 <script>
+$('.chips').material_chip();
+
+
+  $(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+  });
+
+
 	$('.message .close')
   .on('click', function() {
     	$(this).closest('.message').transition('fade');
